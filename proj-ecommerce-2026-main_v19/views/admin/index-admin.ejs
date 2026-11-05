@@ -1,0 +1,78 @@
+<%- include('partials-admin/header') %>
+<%- include('partials-admin/menu') %>
+
+<main class="container py-5">
+
+    <div class="bg-white p-5 rounded shadow-sm">
+
+        <h1 class="display-6">
+            <i class="bi bi-shop"></i>
+            Ode - para todos os amantes de música
+        </h1>
+
+        <p class="lead">
+            Sistema de venda de artigos colecionáveis de música.
+        </p>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <div class="card text-bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-box-seam"></i>
+                            Produtos
+                        </h5>
+                        <p class="card-text">
+                            Cadastre e consulte os produtos disponíveis na loja.
+                        </p>
+                        <a href="/admin/produtos" class="btn btn-light">
+                            Ver produtos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card text-bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-tags"></i>
+                            Categorias
+                        </h5>
+                        <p class="card-text">
+                            Cadastre e consulte as categorias dos produtos.
+                        </p>
+                        <a href="/admin/categorias" class="btn btn-light">
+                            Ver categorias
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card text-bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-tags"></i>
+                            Gêneros
+                        </h5>
+                        <p class="card-text">
+                            Cadastre e consulte os gêneros dos produtos.
+                        </p>
+                        <a href="/admin/generos" class="btn btn-light">
+                            Ver gêneros
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include('partials-admin/footer') %>

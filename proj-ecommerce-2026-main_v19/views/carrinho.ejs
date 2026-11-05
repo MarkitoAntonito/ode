@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+
+<div class="cart-title">
+    <a href="/"><img src="/uploads/arrow.png" class="cart-title-arrow" alt=""></a>
+    <p class="cart-title-title">CARRINHO</p>
+</div>
+
+<% itens.forEach(function(item) { %>
+    <% const produto = item.produto; %>
+    <div class="cart-card">
+        <img src="/uploads/<%=produto.imagem%>" class="cart-card-img" alt="">
+        <div class="cart-card-info">
+            <p class="cart-card-info-title"><%=produto.nome%></p>
+            <img class="cart-card-info-stars" src="/uploads/stars.png" alt="">
+            <p class="cart-card-info-price">R$ <%=item.subtotal.toFixed(2).replace('.', ',')%></p>
+        </div>
+        <form action="/carrinho/remover/<%=produto.id%>" method="POST">
+            <button class="cart-card-trash-button">
+            <img src="/uploads/trash.png" alt="" class="cart-card-trash">
+            </button>
+        </form>
+        
+        
+        <div class="cart-card-amount">
+            <form action="/carrinho/adicionar/<%=produto.id%>" method="POST">
+                <button class="cart-card-amount-plus" type="submit">
+                <p class="cart-card-amount-content">+</p>
+                </button>                
+            </form>
+            <div class="cart-card-amount-number">
+                <p class="cart-card-amount-content"><%=item.quantidade%></p>
+            </div>
+            <form action="/carrinho/diminuir/<%=produto.id%>" method="POST">
+                <button class="cart-card-amount-minus" type="submit">
+                <p class="cart-card-amount-content">-</p>
+                </button>
+            </form>
+        </div>
+    </div>
+<% }); %>
+
+<div class="cart-total">
+    <p class="cart-total-text">R$ <%=total.toFixed(2).replace('.', ',')%></p>
+    <button class="cart-total-button">COMPRAR</button>
+</div>
+
+<%- include('partials/footer') %>

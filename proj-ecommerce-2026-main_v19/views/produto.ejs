@@ -1,0 +1,86 @@
+<%- include('partials/header') %>
+
+
+<div class="product row">
+    <div class="col">
+        <div class="d-flex justify-content-end">
+            <img class="product-img" src="/uploads/<%=produto.imagem%>" alt="">
+        </div>
+    </div>
+    <div class="col">
+        <div class="d-flex justify-content-start">
+            <div class="product-text">
+                <p class="product-title"><%=produto.nome%></p>
+                <img class="product-stars" src="/uploads/stars.png" alt="">
+                <p class="product-price">R$ <%=produto.valor.toFixed(2).replace('.', ',')%></p>
+                <div class="d-block">
+                    <form class="d-inline-flex col-5 justify-content-center" action="/carrinho/adicionar/<%=produto.id%>" method="POST">
+                        <button class="product-button-cart d-inline-flex" type="submit">
+                            <p class="product-button-cart-plus">+</p>
+                            <img class="product-button-cart-cart" src="/uploads/carrinho-preto.png" alt="">
+                            <p class="product-button-cart-text">Adicionar <br> ao Carrinho</p>
+                        </button>
+                    </form>
+                    <button class="product-button-buy col-5 d-inline-flex justify-content-center" type="submit">Comprar agora</button>
+                </div>
+                <div class="d-inline-flex justify-content-evenly align-items-end product-like">
+                    <img src="/uploads/coracao.png" alt="" class="product-heart" onclick="">
+                    <p class="product-like-text">Curtir produto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-details row">
+    <div class="col">
+        <div class="d-flex justify-content-center">
+            <div class="product-details-text">
+                <p class="product-details-text-major">Detalhes do produto</p>
+                <p class="product-details-text-minor">Nome: <%=produto.nome%></p>
+                <p class="product-details-text-minor">Tipo: <%=produto.categoria%></p>
+                <p class="product-details-text-minor">Artista: <%=produto.artista%></p>
+                <p class="product-details-text-minor">Gênero: <%=produto.genero%></p>
+                <p class="product-details-text-minor">Estoque: <%=produto.estoque%></p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="d-flex justify-content-start">
+            <div class="product-details-description">
+                <p class="product-details-description-major">Descrição do produto</p>
+                <p class="product-details-description-minor"><%=produto.descricao%></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="section-title">VOCÊ TAMBÉM PODE GOSTAR</h1>
+<div class="cards-product">
+    <%
+        produtos.forEach(produto => {
+            if (produto.artista === "Radiohead") {       
+    %>
+    <a href="/produto/<%=produto.id%>">
+        <div class="card-product">
+            <img src="/uploads/<%=produto.imagem%>" alt=""class="card-product-img">
+            <p class="card-product-title" ><%=produto.nome%></p>
+            <p class="card-product-price" >R$ <%=produto.valor.toFixed(2).replace('.', ',')%></p>
+    </a>
+            <form action="/carrinho/adicionar/<%=produto.id%>" method="POST">
+                <button class="card-product-button" type="submit">
+                    <img src="/uploads/carrinho.png" class="card-product-button-icon" alt="">
+                    <p class="card-product-button-plus" >+</p>
+                </button>                
+            </form>
+
+        </div>
+    <%
+            }
+        });
+    %>
+</div>
+
+<div class="product-buffer"></div>
+
+<%- include('partials/footer') %>

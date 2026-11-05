@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+
+    <div id="slider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="uploads/slider-pop.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="uploads/slider-rock.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="uploads/slider-mpb.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="uploads/slider-rap.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <h1 class="section-title">EM ALTA</h1>
+    <div class="cards">
+        <% produtos.forEach(produto=> {
+            %>
+            <div class="card-product">
+                <a href="/produto/<%=produto.id%>">
+                    <img src="/uploads/<%=produto.imagem%>" alt="" class="card-product-img">
+                </a>
+                <p class="card-product-title">
+                    <%=produto.nome%>
+                </p>
+                <p class="card-product-price">R$ <%=produto.valor.toFixed(2).replace('.', ',' )%>
+                </p>
+                <form action="/carrinho/adicionar/<%=produto.id%>" method="POST">
+                    <button class="card-product-button" type="submit">
+                        <img src="uploads/carrinho.png" class="card-product-button-icon" alt="">
+                        <p class="card-product-button-plus">+</p>
+                    </button>
+                </form>
+            </div>
+            <% }); %>
+    </div>
+    <h1 class="section-title">RADIOHEAD</h1>
+    <div class="cards">
+        <% produtos.forEach(produto=> {
+            if (produto.artista === "Radiohead") {
+            %>
+            <div class="card-product">
+                <a href="/produto/<%=produto.id%>">
+                    <img src="/uploads/<%=produto.imagem%>" alt="" class="card-product-img">
+                </a>
+                <p class="card-product-title">
+                    <%=produto.nome%>
+                </p>
+                <p class="card-product-price">R$ <%=produto.valor.toFixed(2).replace('.', ',' )%>
+                </p>
+                <form action="/carrinho/adicionar/<%=produto.id%>" method="POST">
+                    <button class="card-product-button" type="submit">
+                        <img src="uploads/carrinho.png" class="card-product-button-icon" alt="">
+                        <p class="card-product-button-plus">+</p>
+                    </button>
+                </form>
+
+            </div>
+            <% } }); %>
+    </div>
+    <h1 class="section-title">O QUE VOCÊ PROCURA?</h1>
+    <div class="card-categorias">
+        <div class="card-categoria-row">
+            <img src="uploads/card-categorias-vinil.png" alt="" class="card-categoria-img">
+            <img src="uploads/card-categorias-cd.png" alt="" class="card-categoria-img">
+            <img src="uploads/card-categorias-botons.png" alt="" class="card-categoria-img">
+        </div>
+        <div class="card-categoria-row">
+            <img src="uploads/card-categorias-canecas.png" alt="" class="card-categoria-img">
+            <img src="uploads/card-categorias-camisetas.png" alt="" class="card-categoria-img">
+            <img src="uploads/card-categorias-poster.png" alt="" class="card-categoria-img">
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
